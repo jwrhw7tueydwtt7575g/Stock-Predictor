@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Price Forecast</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Stock Price Forecaster</h1>
+
+        <form action="/predict" method="post" class="form">
+            <input type="text" name="ticker" placeholder="Enter Stock Ticker (e.g., AAPL)" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if rmse %}
+        <div class="result">
+            <h2>Results for: {{ ticker }}</h2>
+            <p><strong>RMSE:</strong> {{ rmse }}</p>
+            <div class="chart">{{ plot_html | safe }}</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
